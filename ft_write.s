@@ -1,35 +1,47 @@
-        global  ft_write
+        global  _ft_write
         extern ___error
-        extern  printf
         section .text
 
-ft_write:
-    mov rax,    1
-    mov rdi,    rdi
-    mov rsi,    rsi
-    mov rdx,    rdx
+_ft_write:
+    mov rax,    0x02000004
     syscall
-    jmp print
-    ; cmp 
+    jc  _ft_error
+    ret
 
-    jmp exit
+; _print:
+;     push    rbp
+;     ; mov rbp,   rsp
+;     mov [rax], r12
+;     mov     rdi,    fmt
+;     mov     rsi,    [rax]
+;     ; mov     al,     0
+;     call    _printf
 
-print:
-    push    rbp
-    mov     rdi,    fmt
-    mov     rsi,    rax
-    ; mov     rax,     0
-    call    printf
-
-    pop rbp
+;     pop rbp
+;     ret
     
+_ft_error:
+    push    rax
+    ; int tmp = rax;
+    call    ___error
+    ; rax = ___error = &errno;
+    pop     rcx
+    ; rcx = tmp;
+    mov [rax], rcx
+    ; errno = *rax = rcx
+    mov rax, -1
+    ret
 
-exit:
-        mov rax,    60
-        mov rdi,    0
-        syscall
+; _exit:
+;     ; xor rax, rax
+;     ret
+
+; _exit:
+;         mov rax,    0x02000001 
+;         mov rdi,    0
+;         syscall
    
-        section .data
+;         section .data
 
-msg:    db "samir",10,0
-fmt:    db "counter %d",10,0
+; msg:    db "samir",10,0
+; fmt:    db  "counter %d",10,0

@@ -1,10 +1,9 @@
 
-    global      ft_strcpy
-    extern      printf
+    global      _ft_strcpy
 
     section     .text
 
-ft_strcpy:
+_ft_strcpy:
     mov rax,    rdi
     mov rbx,    rsi
     mov r11b,    [rbx]
@@ -27,4 +26,3 @@ _exit:
         mov rax,    60
         mov rdi,    0
         syscall
-   
