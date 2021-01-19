@@ -6,10 +6,10 @@
         section .text
 
 _ft_strdup:
-        ; mov rdx,    0
         mov rax,    0
+        push rdi
         call _ft_strlen
-        ; mov rdx,  
+        pop rdi
         inc rax
         push rdi
         mov rdi,    rax

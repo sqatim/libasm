@@ -4,16 +4,15 @@
             section     .text
     
 _ft_strlen:
-    mov rax,   rdi
-    mov rdx,    0
-    cmp al,0
+    mov rax,   0
+    cmp [rdi], byte 0
     jne check
+    ret
 
 check:
     inc rax
-    inc rdx
-    mov cl,[rax]
-    cmp cl,    0
+    inc rdi
+    mov cl,[rdi]
+    cmp cl,    byte 0
     jne check
-    mov rax,rdx
     ret

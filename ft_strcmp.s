@@ -1,30 +1,30 @@
-        global  ft_strcmp
+        global  _ft_strcmp
 
         section .text
 
-ft_strcmp:
+_ft_strcmp:
     mov rbx,    rdi
     mov rcx,    rsi
     mov r11,    0
     mov r12,    0
-    jmp check
+    jmp _check
 
-check:
+_check:
     mov r11b,   [rbx]
     mov r12b,   [rcx]
     cmp r11b,  0
-    je  soustraction
+    je  _soustraction
     cmp r12b,  0
-    je  soustraction
+    je  _soustraction
     cmp r11b,   r12b
-    jne soustraction
+    jne _soustraction
 
     inc rbx
     inc rcx
-    jmp check
+    jmp _check
 
 
-soustraction:
+_soustraction:
     sub r11,   r12
     mov rax,    r11
     ret

@@ -1,6 +1,6 @@
-         global    _start
+         global    _main
           section   .text
-_start:
+_main:
           mov       rdx, output             ; rdx holds address of next byte to write
           mov       r8, 1                   ; initial line length
           mov       r9, 0                   ; number of stars written on line so far
@@ -17,7 +17,7 @@ line:
           cmp       r8, maxlines            ; wait, did we already finish the last line?
           jng       line                    ; if not, begin writing this line
 done:
-          mov       rax, 1        ; system call for write
+          mov       rax, 0x02000004            ; system call for write
           mov       rdi, 1                  ; file handle 1 is stdout
           mov       rsi, output             ; address of string to output
           mov       rdx, dataSize           ; number of bytes

@@ -1,47 +1,93 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <fcntl.h>
-// void hello();
-size_t ft_strlen(const char *str);
-char *ft_strcpy(char *, char *);
-int ft_strcmp(char *,char *);
-ssize_t ft_write(int, const void* , size_t);
-ssize_t ft_read(int, void*, size_t);
-int ft_strdup(char *);
+#include "libasm.h"
 
-int main()
+// void		test_strlen(char *str)
+// {
+// 	int a;
+// 	int s;
+
+// 	s = strlen(str);
+// 	printf("sys_strlen |%d| %s\n", s, str);
+// 	a = ft_strlen(str);
+// 	printf("asm_strlen |%d| %s\n", a, str);
+// }
+
+// void		test_strcmp(void)
+// {
+// 	int		i;
+// 	char	*s1[5];
+// 	char	*s2[5];
+
+// 	s1[0] = "d";
+// 	s1[1] = "Hello, World!";
+// 	s1[2] = NULL;
+// 	s1[3] = "abcdefghijklmnopqrstuvwxyz";
+// 	s1[4] = "1337FUTUREISLOADING!";
+// 	s2[0] = "r";
+// 	s2[1] = "Hello, World!";
+// 	s2[2] = NULL;
+// 	s2[3] = "abcdefghijklmnopqrstuvwxyz";
+// 	s2[4] = "1337FUTUREISLOADING!";
+// 	i = strcmp(s1[3], s2[3]);
+// 	printf("sys_strcmp |%d|\n", i);
+// 	i = ft_strcmp(s1[3], s2[3]);
+// 	printf("asm_strcmp |%d|\n", i);
+// }
+
+// void		test_write(void)
+// {
+// 	int		fd;
+// 	int		fd1;
+// 	char	*buffer;
+// 	ssize_t	i;
+
+// 	buffer = "Hello, Africa!";
+// 	fd = open("file.txt", O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+// 	i = write(fd, buffer, ft_strlen(buffer));
+//     printf("errno_sys ==> {%d}\n",errno);
+//     if(errno != 0)
+//     errno = 0;
+// 	close(fd);
+// 	fd1 = open("file1.txt", O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+// 	i = ft_write(fd, buffer, ft_strlen(buffer));
+//     printf("my_errno ==> {%d}\n",errno);
+// 	close(fd1);
+// }
+
+// void		test_read(void)
+// {
+// 	int		fd;
+// 	char	buff[5];
+// 	ssize_t	i;
+
+// 	fd = open("file.txt", O_RDONLY);
+// 	i = read(fd, buff, 5);
+// 	close(fd);
+// 	printf("read |%zd| |%s|\n", i, buff);
+// }
+
+int			main(void)
 {
-    // hello();
-    char *str1 = (char *)malloc(6);
-    str1[0] = 's';
-    str1[1] = 'a';
-    str1[2] = 'l';
-    str1[3] = 'a';
-    str1[4] = 'm';
-    char *str2 = "samir";
-    printf("%s\n",ft_strcpy(str1,str2));
-    // int d = ft_write(1,"samir\n",6);
-    // printf(" result {%d} \t errno {%d} \n",d,errno);
-    // char *line = (char *)malloc(7);
-    // int fd = open("text.txt",O_RDWR);
-    // int res = 0;// ft_read(fd,line,7);
+	// char *str[5];
+	char *sy_cpy;
+	char *my_cpy;
+	// char dest[100];
 
-    // printf("%d\n",ft_strdup("samir"));
-    // int res1 = read(fd,line,7);
-    // printf("{result ==> %d}\t{res1 ==> %d}",res,res1);
-    // line[6] = '\0';
-    // write(1,"\n",1);
-    // ft_write(1,line,7);
-    // write(1,"\n",1);
-    // ft_write(1,line,7);
-    // str1[0] = 'o';
-    // str1[1] = 's';
-    // char *str2 = "zainab l karita";
-    // ft_strcpy(str1,str2);
-    // printf("ft_strcmp{%d}\n",ft_strcmp(str1,str2));
-    // ft_write(10,"samir\n",6);
-    // printf("{%d}\n", ft_strlen("samir"));
-    return (0);
+	// str[0] = "";
+	// str[1] = "Hello, World!";
+	// str[2] = NULL;
+	// str[3] = "abcdefghijklmnopqrstuvwxyz";
+	// str[4] = "1337FUTUREISLOADING!";
+	// test_strlen(str[0]);
+	// strcpy(dest, str[0]);
+	// printf("sys_cpy |%s|, |%s|\n", str[0], dest);
+	// ft_strcpy(dest, str[0]);
+	// printf("asm_cpy |%s|, |%s|\n", str[0], dest);
+	// test_strcmp();
+	// test_write();
+	// test_read();
+	sy_cpy = strdup("salam");
+	printf("sys_copy|%s| |%zu|\n", sy_cpy, ft_strlen(sy_cpy));
+	my_cpy = ft_strdup("salam");
+	printf("asm_copy|%s| |%zu|\n", my_cpy, ft_strlen(my_cpy));
+	return (0);
 }
